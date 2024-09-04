@@ -1,12 +1,15 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-require('dotenv').config();
-
-const entrySchema = mongoose.Schema({
+const showSchema = new mongoose.Schema({
     museum : {
         type: String,
         required: true
     },
+    showname : {
+        type: String,
+        required: true
+    },
+    
     tickets : {
         type: Number,
         required: true
@@ -19,9 +22,6 @@ const entrySchema = mongoose.Schema({
         type: Number,
         required: true
     },
+});
 
-})
-
-const entrytickets = mongoose.model('entrytickets', entrySchema);
-
-module.exports = entrytickets;
+module.exports = mongoose.model('show', showSchema);
