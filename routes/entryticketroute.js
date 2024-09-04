@@ -37,6 +37,7 @@ router.post('/bookticket', async function (req, res) {
       // Respond with a success message
       res.status(200).json({
         msg: "Ticket booked successfully",
+        price:curr_museum.price,
         remaining_tickets: curr_museum.currtickets,  // Optionally, return the remaining tickets
       });
   
