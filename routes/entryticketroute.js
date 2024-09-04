@@ -5,8 +5,11 @@ const Museum = require('../models/entryticketmodel');
 
 router.get('/fetchtickets',async function (req,res){
     try {
-        const mueseum_name=req.query.museum; // Assuming the name is passed as a query parameter
-        const curr_museum = await Museum.findOne({ name: mueseum_name });
+        const museum_name=req.query.museum; // Assuming the name is passed as a query parameter
+        console.log(museum_name);
+        const curr_museum = await Museum.findOne({ museum: museum_name });
+
+        console.log(curr_museum);
         res.status(200).json({
             tickets:curr_museum.currtickets
         })

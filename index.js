@@ -1,6 +1,11 @@
 const express = require('express');
+
+require('dotenv').config();
 const app=express();
-const port = process.env.PORT || 3000;
+let port = process.env.PORT;
+if(!port){
+  port=3000;
+}
 const connectdb=require('./db/connection')
 // Middleware to parse JSON bodies
 app.use(express.json());
