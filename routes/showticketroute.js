@@ -1,10 +1,6 @@
 const express = require("express");
-
 const router = express.Router();
-
 const showtickets = require('../models/showsticketmodel');
-
-
 
 router.get('/fetchshows',async (req,res)=>{
     try{
@@ -12,10 +8,10 @@ router.get('/fetchshows',async (req,res)=>{
 
 
         const shows = await showtickets.find({
-            museum : museum.museum
+            museum : museum
         });
 
-        let availableshows;
+        let availableshows=[];
 
         for(let i = 0;i<shows.length;i++){
             if(tickets <= shows[i].currtickets){
@@ -26,7 +22,7 @@ router.get('/fetchshows',async (req,res)=>{
                 availableshows.push(val);
             }
         }
-
+        console.log(availableshows);
         res.status(200).json({
             status: 'success',
             data: availableshows,

@@ -5,7 +5,7 @@ const Museum = require('../models/entryticketmodel');
 
 router.get('/fetchtickets',async function (req,res){
     try {
-        const mueseum_name=req.body.museum; // Assuming the name is passed as a query parameter
+        const mueseum_name=req.query.museum; // Assuming the name is passed as a query parameter
         const curr_museum = await Museum.findOne({ name: mueseum_name });
         res.status(200).json({
             tickets:curr_museum.currtickets
@@ -21,7 +21,7 @@ router.post('/bookticket', async function (req, res) {
       const museum_name = req.body.museum; // Assuming the name is passed in the request body
       const ticketreq=req.body.tickets;
       // Find the museum by name
-      const curr_museum = await Museum.findOne({ name: museum_name });
+      const curr_museum = await Museum.findOne({ museum: museum_name });
   
       if (!curr_museum) {
         return res.status(404).json({
@@ -37,7 +37,7 @@ router.post('/bookticket', async function (req, res) {
       // Respond with a success message
       res.status(200).json({
         msg: "Ticket booked successfully",
-        remaining_tickets: curr_museum.tickets,  // Optionally, return the remaining tickets
+        remaining_tickets: curr_museum.currtickets,  // Optionally, return the remaining tickets
       });
   
     } catch (error) {
