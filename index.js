@@ -15,11 +15,13 @@ connectdb();
 // Import the router
 const entryticketroute = require('./routes/entryticketroute');
 const showticketroute = require('./routes/showticketroute');
+const paymentroute = require('./routes/paymentroute');
 
 
 // Use the router
 app.use('/entry', entryticketroute);
 app.use('/show',showticketroute );
+app.use('/payment',paymentroute );
 
 
 app.listen(port, () => {
