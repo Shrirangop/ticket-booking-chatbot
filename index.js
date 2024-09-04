@@ -1,5 +1,5 @@
 const express = require('express');
-
+const cors=require("cors");
 require('dotenv').config();
 const app=express();
 let port = process.env.PORT;
@@ -9,7 +9,7 @@ if(!port){
 const connectdb=require('./db/connection')
 // Middleware to parse JSON bodies
 app.use(express.json());
-
+app.use(cors());
 
 connectdb();
 // Import the router

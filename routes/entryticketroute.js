@@ -11,7 +11,8 @@ router.get('/fetchtickets',async function (req,res){
 
         console.log(curr_museum);
         res.status(200).json({
-            tickets:curr_museum.currtickets
+            tickets:curr_museum.currtickets,
+            price:curr_museum.price,
         })
       } catch (error) {
         console.error('Error checking museum:', error);
@@ -40,7 +41,6 @@ router.post('/bookticket', async function (req, res) {
       // Respond with a success message
       res.status(200).json({
         msg: "Ticket booked successfully",
-        price:curr_museum.price,
         remaining_tickets: curr_museum.currtickets,  // Optionally, return the remaining tickets
       });
   
