@@ -18,6 +18,22 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  museum:{
+    type: String,
+    required: true,
+  },
+  shows:{
+    type: Array,
+    required: true,
+  },
+  nooftickets:{
+    type: Number,
+    required: true,
+  },
+  userid:{
+    type: String,
+    required: true
+  },
   createdAt: {
     type: Date,
     default: Date.now()
