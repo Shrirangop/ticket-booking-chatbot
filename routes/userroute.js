@@ -30,11 +30,11 @@ router.post("/adduser", async (req, res)=>{
 
 router.get("/getuser", async (req, res)=>{
     try{
-        const {userid} = req.query;
+        const {email} = req.query;
 
-        const users = await User.find(
+        const users = await User.findOne(
             {
-                userid
+                email
             }
         );
 
